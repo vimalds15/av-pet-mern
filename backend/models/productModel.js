@@ -6,7 +6,7 @@ const reviewSchema = mongoose.Schema({
     comment:{type:String,required:true},
 },{timestamps:true})
 
-const prodcutSchema = mongoose.Schema({
+const productSchema = mongoose.Schema({
     user:{
         type:mongoose.Schema.Types.ObjectId,
         required:true,
