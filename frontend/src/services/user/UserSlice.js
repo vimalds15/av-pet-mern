@@ -41,7 +41,7 @@ export const login = (email,password) => async (dispatch) => {
     const {data} = await axios.post("/api/users/login",{email,password},config)
     dispatch(setLoading(false))
     dispatch(setUserInfo(data))
-    localStorage.setItem("userInfo",JSON.stringify(data,))
+    localStorage.setItem("userInfo",JSON.stringify(data))
 }catch(error){
     dispatch(setLoading(false))
     const err = error.response && error.response.data.message?error.response.data.message:error.message
@@ -53,3 +53,21 @@ export const logout= () => async(dispatch) => {
     localStorage.removeItem("userInfo")
     dispatch(setUserInfo(null))
 } 
+
+export const register = (name,email,password) => async(dispatch)=>{
+    try{dispatch(setLoading(true))
+        const config ={
+            headers: {
+                "Content-Type":"application/json"
+            }
+        }
+        const {data} = await axios.post("/api/users",{name,email,password},config)
+        dispatch(setLoading(false))
+        dispatch(setUserInfo(data))
+        localStorage.setItem("userInfo",JSON.stringify(data))
+    } catch (error) {
+        dispatch(setLoading(false))
+        const err = error.response && error.response.data.message?error.response.data.message:error.message
+        dispatch(setError(err))
+    }
+}
