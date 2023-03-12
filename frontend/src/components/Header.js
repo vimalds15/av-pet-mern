@@ -2,10 +2,10 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {Container,Nav,Navbar, NavDropdown} from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap'
-import { logout } from '../services/user/UserSlice';
+import { logout } from '../services/user/UserLoginSlice';
 
 const Header = () => {
-  const userLogin = useSelector(state=>state.user)
+  const userLogin = useSelector(state=>state.userLogin)
   const {userInfo} = userLogin
   const dispatch = useDispatch()
 

@@ -3,9 +3,9 @@ import { Form, Button, Row, Col } from "react-bootstrap";
 import FormContainer from "../components/FormContainer";
 import { Link, useLocation, useNavigate} from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../services/user/UserSlice";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
+import { login } from "../services/user/UserLoginSlice";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
@@ -13,7 +13,7 @@ const LoginScreen = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const dispatch = useDispatch()
-  const userLogin = useSelector(state=>state.user)
+  const userLogin = useSelector(state=>state.userLogin)
   const {loading,error,userInfo} = userLogin
 
   const redirect = location.search ? location.search.split("=")[1]:"/"

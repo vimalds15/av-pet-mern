@@ -3,9 +3,9 @@ import { Form, Button, Row, Col } from "react-bootstrap";
 import FormContainer from "../components/FormContainer";
 import { Link, useLocation, useNavigate} from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
-import { register } from "../services/user/UserSlice";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
+import { register } from "../services/user/UserRegisterSlice";
 
 const RegisterScreen = () => {
   const [name, setName] = useState("");
@@ -16,7 +16,7 @@ const RegisterScreen = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const dispatch = useDispatch()
-  const userLogin = useSelector(state=>state.user)
+  const userLogin = useSelector(state=>state.userRegister)
   const {loading,error,userInfo} = userLogin
 
   const redirect = location.search ? location.search.split("=")[1]:"/"
