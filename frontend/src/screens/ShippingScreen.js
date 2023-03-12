@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import FormContainer from "../components/FormContainer";
-import { Link, useLocation, useNavigate} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import { setShippingAddress } from "../services/cart/CartSlice";
+import CheckoutSteps from "../components/CheckoutSteps";
 
 const ShippingScreen = () => {
   const dispatch = useDispatch()
@@ -24,6 +25,7 @@ const ShippingScreen = () => {
 
   return (
     <FormContainer>
+       <CheckoutSteps step1 step2 />
        <h1>Shipping</h1> 
        <Form>
        <Form.Group controlId="address">
