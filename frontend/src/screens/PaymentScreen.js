@@ -4,6 +4,7 @@ import FormContainer from "../components/FormContainer";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import CheckoutSteps from "../components/CheckoutSteps";
+import { setPaymentMethod } from "../services/cart/CartSlice";
 
 const PaymentScreen = () => {
   const dispatch = useDispatch();
@@ -16,11 +17,11 @@ const PaymentScreen = () => {
     navigate("/shipping");
   }
 
-  const [paymentMethod, setPaymentMethod] = useState("PayPal");
+  const [payment, setPayment] = useState("PayPal");
 
   const submitHandler = (e) => {
     e.preventDefault();
-    // dispatch(savePaymentMethod(payment))
+    dispatch(setPaymentMethod(payment))
     navigate("/placeorder");
   };
 
@@ -40,7 +41,7 @@ const PaymentScreen = () => {
             name="paymentMethod"
             value="PayPal"
             checked
-            onChange={(e) => setPaymentMethod(e.target.value)}
+            onChange={(e) => setPayment(e.target.value)}
           ></Form.Check>
           {/* <Form.Check
             type="radio"
