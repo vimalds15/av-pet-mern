@@ -44,6 +44,7 @@ export const createOrder = (order) => async(dispatch,getState) => {
 
       const {data} = await axios.post(`/api/orders`,order,config)
       dispatch(setOrder(data))
+      dispatch(setLoading(false))
   } catch (error) {
       dispatch(setLoading(false))
       const err = error.response && error.response.data.message?error.response.data.message:error.message
