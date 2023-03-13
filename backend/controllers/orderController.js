@@ -5,7 +5,7 @@ import Order from "../models/orderModel.js";
 // @route POST /apji/orders
 // @access Private
 
-const addOrderItems = asyncHandler(async (req, res) => {
+export const addOrderItems = asyncHandler(async (req, res) => {
   const {
     orderItems,
     shippingAddress,
