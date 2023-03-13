@@ -38,7 +38,7 @@ export default UserProfileSlice.reducer
 export const getUserDetails = (id) => async(dispatch,getState) => {
     try {
         dispatch(setLoading(true))
-        const {token} =getState().user.userInfo
+        const {token} =getState().userLogin.userInfo
         const config ={
             headers: {
                 "Content-Type":"application/json",
@@ -60,7 +60,7 @@ export const getUserDetails = (id) => async(dispatch,getState) => {
 
 export const updateUserProfile = (user) => async(dispatch,getState) => {
     try {
-        const {token} =getState().user.userInfo
+        const {token} =getState().userLogin.userInfo
         const config ={
             headers: {
                 "Content-Type":"application/json",

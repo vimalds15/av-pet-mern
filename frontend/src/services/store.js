@@ -1,5 +1,6 @@
 import {configureStore} from "@reduxjs/toolkit"
 import CartSlice from "./cart/CartSlice"
+import OrderCreateSlice from "./order/OrderCreateSlice"
 import ProductDetailSlice from "./products/ProductDetailSlice"
 import ProductSlice from "./products/ProductSlice"
 import UserLoginSlice from "./user/UserLoginSlice"
@@ -14,5 +15,6 @@ export const store = configureStore({
         "userLogin":UserLoginSlice,
         "userRegister":UserRegisterSlice,
         "userProfile":UserProfileSlice,
+        "orderCreate":OrderCreateSlice
     }
 })
