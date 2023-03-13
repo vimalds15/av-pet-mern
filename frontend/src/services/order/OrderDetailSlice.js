@@ -2,9 +2,9 @@ import { createSlice } from '@reduxjs/toolkit'
 import axios from 'axios';
 
 const initialState = {
-  orderItems:[],
+  order:[],
   shippingAddress:{},
-  loading:null,
+  loading:true,
   success:null,
   error:null,
 }
@@ -14,7 +14,7 @@ const OrderDetailSlice = createSlice({
   initialState,
   reducers: {
     setOrderItems:(state,action) => {
-      state.orderItems = action.payload
+      state.order = action.payload
       state.loading=false
       state.success=true
     },
@@ -31,9 +31,8 @@ export const {setOrderItems,setError,setLoading} = OrderDetailSlice.actions
 
 export default OrderDetailSlice.reducer
 
-export const getOrderDetails = (id) => async(dispatch,getState) => {
+const getOrderDetails = (id) => async(dispatch,getState) => {
   try {
-      dispatch(setLoading(true))
       const {token} =getState().userLogin.userInfo
       const config ={
           headers: {
@@ -51,3 +50,5 @@ export const getOrderDetails = (id) => async(dispatch,getState) => {
       dispatch(setError(err))
   }
 }
+
+export {getOrderDetails}

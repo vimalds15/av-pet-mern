@@ -41,7 +41,7 @@ useEffect(()=>{
 
   useEffect(()=>{
     if(success){
-        navigate(`/order/${order._id}`)
+        navigate(`/orders/${order._id}`)
     }
 
     
@@ -63,7 +63,7 @@ useEffect(()=>{
             </ListGroup.Item>
             <ListGroup.Item>
               <h2>Payment Method</h2>
-              <strong>Method:</strong>
+              <strong>Method: </strong>
                 {cart.paymentMethod}
             </ListGroup.Item>
             <ListGroup.Item>
