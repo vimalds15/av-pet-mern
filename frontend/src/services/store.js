@@ -7,6 +7,7 @@ import OrderPaySlice from "./order/OrderPaySlice"
 import ProductDetailSlice from "./products/ProductDetailSlice"
 import ProductSlice from "./products/ProductSlice"
 import UserDeleteSlice from "./user/UserDeleteSlice"
+import UserDetailSlice from "./user/UserDetailSlice"
 import UserListSlice from "./user/UserListSlice"
 import UserLoginSlice from "./user/UserLoginSlice"
 import UserProfileSlice from "./user/UserProfileSlice"
@@ -23,6 +24,7 @@ export const store = configureStore({
         "userProfile":UserProfileSlice,
         "userList":UserListSlice,
         "userUpdate":UserUpdateSlice,
+        "userDetail":UserDetailSlice,
         "userDelete":UserDeleteSlice,
         "orderCreate":OrderCreateSlice,
         "orderDetail":OrderDetailSlice,
