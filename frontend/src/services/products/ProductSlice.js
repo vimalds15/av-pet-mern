@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const initialState = {
   allProducts:[],
-  loading:true,
+  loading:null,
   error:null,
 }
 
