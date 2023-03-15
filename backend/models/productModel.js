@@ -53,6 +53,9 @@ const productSchema = mongoose.Schema({
     timestamps:true
 })
 
+productSchema.methods.deleteProduct = async function(){
+    await this.deleteOne()
+}
 const Product = mongoose.model("Product",productSchema)
 
 export default Product
