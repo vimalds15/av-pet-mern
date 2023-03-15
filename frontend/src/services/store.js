@@ -11,6 +11,7 @@ import UserListSlice from "./user/UserListSlice"
 import UserLoginSlice from "./user/UserLoginSlice"
 import UserProfileSlice from "./user/UserProfileSlice"
 import UserRegisterSlice from "./user/UserRegisterSlice"
+import UserUpdateSlice from "./user/UserUpdateSlice"
 
 export const store = configureStore({
     reducer:{
@@ -21,6 +22,7 @@ export const store = configureStore({
         "userRegister":UserRegisterSlice,
         "userProfile":UserProfileSlice,
         "userList":UserListSlice,
+        "userUpdate":UserUpdateSlice,
         "userDelete":UserDeleteSlice,
         "orderCreate":OrderCreateSlice,
         "orderDetail":OrderDetailSlice,
