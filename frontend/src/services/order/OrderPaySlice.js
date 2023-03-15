@@ -45,8 +45,8 @@ const payOrder = (id,paymentResult) => async(dispatch, getState) => {
 
 
       const {data} = await axios.put(`/api/orders/${id}/pay`,paymentResult,config)
-      dispatch(setSuccess(true))
       dispatch(setLoading(false))
+      dispatch(setSuccess(true))
     } catch (error) {
       dispatch(setSuccess(false))
       const err = error.response && error.response.data.message?error.response.data.message:error.message

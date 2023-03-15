@@ -2,6 +2,7 @@ import {configureStore} from "@reduxjs/toolkit"
 import CartSlice from "./cart/CartSlice"
 import OrderCreateSlice from "./order/OrderCreateSlice"
 import OrderDetailSlice from "./order/OrderDetailSlice"
+import OrderListSlice from "./order/OrderListSlice"
 import OrderPaySlice from "./order/OrderPaySlice"
 import ProductDetailSlice from "./products/ProductDetailSlice"
 import ProductSlice from "./products/ProductSlice"
@@ -19,6 +20,7 @@ export const store = configureStore({
         "userProfile":UserProfileSlice,
         "orderCreate":OrderCreateSlice,
         "orderDetail":OrderDetailSlice,
-        "orderPay":OrderPaySlice
+        "orderPay":OrderPaySlice,
+        "orderList":OrderListSlice
     }
 })

@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const initialState = {
     productInfo:null,
-    loading:true,
+    loading:null,
     error:null,
 }
 
