@@ -62,6 +62,7 @@ const OrderScreen = () => {
       }
     }
     console.log(order);
+    // eslint-disable-next-line
   }, [dispatch, orderId,successPay]);
 
   return loading ? (

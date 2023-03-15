@@ -18,6 +18,7 @@ const ProductScreen = () => {
   useEffect(() => {
     dispatch(getProductById(id));
     console.log("productInfo",productInfo)
+    // eslint-disable-next-line
   }, [id,dispatch]);
 
   const addToCartHandler = () => {

@@ -33,6 +33,7 @@ export const deleteUser = (id) => async(dispatch,getState) => {
         }
 
         console.log("id",id)
+        // eslint-disable-next-line
         const {data} = await axios.delete(`/api/users/${id}`,config)
         dispatch(setSuccess(true))
     } catch (error) {

@@ -37,6 +37,7 @@ useEffect(()=>{
         dispatch(setShippingPrice(itemsPrice>100?0:100))
         dispatch(setTaxPrice(addDecimals(Number((0.15*itemsPrice).toFixed(2)))))
         dispatch(setTotalPrice(Number(itemsPrice)+Number(shippingPrice+Number(taxPrice))))
+        // eslint-disable-next-line
   },[dispatch,itemsPrice,taxPrice,shippingPrice,totalPrice])
 
   useEffect(()=>{
@@ -44,7 +45,7 @@ useEffect(()=>{
         navigate(`/orders/${order._id}`)
     }
 
-    
+    // eslint-disable-next-line
   },[navigate,success])
 
   return (

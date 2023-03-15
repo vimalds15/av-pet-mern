@@ -19,7 +19,7 @@ const UserListScreen = () => {
   const { userInfo } = userLogin;
 
   const userDelete = useSelector((state) => state.userDelete);
-  const { success:successDelete,error:errorDelete } = userDelete;
+  const { success:successDelete } = userDelete;
 
   const deleteHandler = (id) => {
     if(window.confirm("Are you sure?")){
@@ -33,6 +33,7 @@ const UserListScreen = () => {
     }else{
         navigate('/login')
     }
+    // eslint-disable-next-line
   }, [dispatch,navigate,userInfo?.isAdmin,successDelete]);
 
 
@@ -70,7 +71,7 @@ const UserListScreen = () => {
                   )}
                 </td>
                 <td>
-                    <LinkContainer to={`/user/${user._id}/edit`}>
+                    <LinkContainer to={`/admin/user/${user._id}/edit`}>
                         <Button variant="light" className="btn-sm">
                             <i className="fas fa-edit"></i>
                         </Button>

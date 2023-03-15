@@ -43,7 +43,7 @@ const payOrder = (id,paymentResult) => async(dispatch, getState) => {
           }
       }
 
-
+      // eslint-disable-next-line
       const {data} = await axios.put(`/api/orders/${id}/pay`,paymentResult,config)
       dispatch(setLoading(false))
       dispatch(setSuccess(true))
