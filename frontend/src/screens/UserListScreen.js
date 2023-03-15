@@ -22,7 +22,9 @@ const UserListScreen = () => {
   const { success:successDelete,error:errorDelete } = userDelete;
 
   const deleteHandler = (id) => {
-    dispatch(deleteUser(id))
+    if(window.confirm("Are you sure?")){
+      dispatch(deleteUser(id))
+    }
   }
 
   useEffect(() => {
