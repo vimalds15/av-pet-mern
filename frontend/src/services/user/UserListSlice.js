@@ -20,10 +20,15 @@ const UserListSlice = createSlice({
     setError:(state,action)=>{
         state.error=action.payload
     },
+    setAdminReset:(state)=>{
+        state.users=[]
+        state.loading=null
+        state.error=null
+    }
   }
 });
 
-export const {setError,setLoading,setUsers} = UserListSlice.actions
+export const {setError,setLoading,setUsers,setAdminReset} = UserListSlice.actions
 
 export default UserListSlice.reducer
 
