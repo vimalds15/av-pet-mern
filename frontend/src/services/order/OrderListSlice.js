@@ -20,11 +20,14 @@ const OrderListSlice = createSlice({
     },
     setError:(state,action)=>{
         state.error=action.payload
+    },
+    setOrderReset:(state)=>{
+        state.orders=null
     }
   }
 });
 
-export const {setOrderList,setLoading,setError} = OrderListSlice.actions
+export const {setOrderList,setLoading,setError,setOrderReset} = OrderListSlice.actions
 
 export default OrderListSlice.reducer
 

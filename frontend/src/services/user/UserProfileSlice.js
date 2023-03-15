@@ -27,7 +27,7 @@ const UserProfileSlice = createSlice({
     },
     setSuccess:(state,action)=>{
         state.success=action.payload
-    }
+    },
   }
 });
 

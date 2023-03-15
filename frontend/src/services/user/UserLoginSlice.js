@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import axios from 'axios';
+import { setOrderReset } from '../order/OrderListSlice';
 
 const userInfoFromStorage = localStorage.getItem("userInfo")
   ? JSON.parse(localStorage.getItem("userInfo"))
@@ -23,11 +24,16 @@ const UserLoginSlice = createSlice({
     },
     setError:(state,action)=>{
         state.error=action.payload
+    },
+    setUserReset:(state)=>{
+        state.userInfo=null
+        state.loading=null
+        state.error=null
     }
   }
 });
 
-export const {setLoading,setUserInfo,setError} = UserLoginSlice.actions
+export const {setLoading,setUserInfo,setError,setUserReset} = UserLoginSlice.actions
 
 export default UserLoginSlice.reducer
 
@@ -39,6 +45,7 @@ export const login = (email,password) => async (dispatch) => {
         }
     }
     const {data} = await axios.post("/api/users/login",{email,password},config)
+    console.log(data)
     dispatch(setLoading(false))
     dispatch(setUserInfo(data))
     localStorage.setItem("userInfo",JSON.stringify(data))
@@ -53,7 +60,8 @@ export const logout = () => async(dispatch) => {
     localStorage.removeItem("userInfo")
     localStorage.removeItem("cartItems")
     localStorage.removeItem("paymentMethod")
-    dispatch(setUserInfo(null))
+    dispatch(setUserReset())
+    dispatch(setOrderReset())
 } 
 
 
