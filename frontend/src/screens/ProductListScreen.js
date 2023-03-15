@@ -4,9 +4,9 @@ import { LinkContainer } from "react-router-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
-import { getUsers } from "../services/user/UserListSlice";
 import { useNavigate } from "react-router-dom";
 import { getAllProducts } from "../services/products/ProductSlice";
+import { deleteProduct } from "../services/products/ProductDeleteSlice";
 
 const ProductListScreen = () => {
   const dispatch = useDispatch();
@@ -14,13 +14,16 @@ const ProductListScreen = () => {
 
   const productList = useSelector((state) => state.product);
   const { loading, error, allProducts:products } = productList;
+  
+  const productDelete = useSelector((state) => state.productDelete);
+  const { loading:loadingDelete, error:errorDelete, success:successDelete } = productDelete;
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
   const deleteHandler = (id) => {
     if(window.confirm("Are you sure?")){
-    //   dispatch(deleteUser(id))
+      dispatch(deleteProduct(id))
     }
   }
 
@@ -31,7 +34,7 @@ const ProductListScreen = () => {
         navigate('/login')
     }
     // eslint-disable-next-line
-  }, [dispatch,navigate,userInfo?.isAdmin]);
+  }, [dispatch,navigate,userInfo?.isAdmin,successDelete]);
 
 
   return (
@@ -44,6 +47,9 @@ const ProductListScreen = () => {
             <Button className="my-3" onClick={""}> <i className="fas fa-plus"></i> Create Product</Button>
         </Col>
     </Row>
+    {loadingDelete&& <Loader />}
+    {errorDelete&&<Message variant="danger">{error}</Message>}
+
       {loading ? (
         <Loader />
       ) : error ? (

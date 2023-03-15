@@ -2,36 +2,32 @@ import { createSlice } from '@reduxjs/toolkit'
 import axios from 'axios';
 
 const initialState = {
-    orders:[],
-    loading:null,
+    success:null,
     error:null,
+    loading:null,
 }
 
-const OrderListSlice = createSlice({
-  name: "orderList",
+const ProductDeleteSlice = createSlice({
+  name: "productDelete",
   initialState,
   reducers: {
-    setOrderList:(state,action)=>{
-        state.orders=action.payload
-        // state.loading=false
+    setError:(state,action)=>{
+        state.error=action.payload
+    },
+    setSuccess:(state,action)=>{
+        state.success=action.payload
     },
     setLoading:(state,action)=>{
         state.loading=action.payload
     },
-    setError:(state,action)=>{
-        state.error=action.payload
-    },
-    setOrderReset:(state)=>{
-        state.orders=null
-    }
   }
 });
 
-export const {setOrderList,setLoading,setError,setOrderReset} = OrderListSlice.actions
+export const {setError,setLoading,setSuccess} = ProductDeleteSlice.actions
 
-export default OrderListSlice.reducer
+export default ProductDeleteSlice.reducer
 
-const listMyOrders = () => async(dispatch, getState) => {
+export const deleteProduct = (id) => async(dispatch, getState) => {
     try {
         dispatch(setLoading(true))
         const {token} =getState().userLogin.userInfo
@@ -42,8 +38,8 @@ const listMyOrders = () => async(dispatch, getState) => {
         }
   
   
-        const {data} = await axios.get(`/api/orders/myorders`,config)
-        dispatch(setOrderList(data))
+        await axios.delete(`/api/products/${id}`,config)
+        dispatch(setSuccess(true))
         dispatch(setLoading(false))
       } catch (error) {
         const err = error.response && error.response.data.message?error.response.data.message:error.message
@@ -51,6 +47,3 @@ const listMyOrders = () => async(dispatch, getState) => {
         dispatch(setLoading(false))
     }
   }
-
-export {listMyOrders}
-  
