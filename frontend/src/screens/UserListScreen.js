@@ -6,6 +6,7 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { getUsers } from "../services/user/UserListSlice";
 import { useNavigate } from "react-router-dom";
+import { deleteUser } from "../services/user/UserDeleteSlice";
 
 const UserListScreen = () => {
   const dispatch = useDispatch();
@@ -17,8 +18,11 @@ const UserListScreen = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-  const deleteHandler = (id) => {
+  const userDelete = useSelector((state) => state.userDelete);
+  const { success:successDelete,error:errorDelete } = userDelete;
 
+  const deleteHandler = (id) => {
+    dispatch(deleteUser(id))
   }
 
   useEffect(() => {
@@ -27,7 +31,8 @@ const UserListScreen = () => {
     }else{
         navigate('/login')
     }
-  }, [dispatch,navigate,userInfo.isAdmin]);
+  }, [dispatch,navigate,userInfo?.isAdmin,successDelete]);
+
 
   return (
     <>

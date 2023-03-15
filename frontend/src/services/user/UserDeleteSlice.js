@@ -32,7 +32,7 @@ export const deleteUser = (id) => async(dispatch,getState) => {
             }
         }
 
-
+        console.log("id",id)
         const {data} = await axios.delete(`/api/users/${id}`,config)
         dispatch(setSuccess(true))
     } catch (error) {

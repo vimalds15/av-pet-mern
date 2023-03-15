@@ -30,6 +30,10 @@ userSchema.methods.matchPassword = async function(enteredPassword) {
     return await bcrypt.compare(enteredPassword,this.password)
 }
 
+userSchema.methods.deleteUser = async function(){
+    await this.deleteOne()
+}
+
 userSchema.pre("save",async function (next){
     if(!this.isModified("password")){
         next()
