@@ -101,6 +101,7 @@ export const getOrders = asyncHandler(async (req, res) => {
 
 export const updateOrderToDelivered = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id)
+  console.log("dfasjfaskldjfasd",order)
   if(order){
     order.isDelivered=true
     order.deliveredAt=Date.now()
