@@ -27,10 +27,10 @@ export const {setAllProducts,setLoading,setError} = ProductSlice.actions
 
 export default ProductSlice.reducer
 
-export const getAllProducts = () => async (dispatch) => {
+export const getAllProducts = (keyword="") => async (dispatch) => {
   try {
     dispatch(setLoading(true))
-    const {data} = await axios.get("/api/products")
+    const {data} = await axios.get(`/api/products?keyword=${keyword}`)
     dispatch(setAllProducts(data))
     dispatch(setLoading(false))
   } catch (error) {
