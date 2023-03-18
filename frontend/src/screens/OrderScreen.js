@@ -6,8 +6,9 @@ import Message from "../components/Message";
 import Loader from "../components/Loader";
 import { Link, useParams } from "react-router-dom";
 import { getOrderDetails } from "../services/order/OrderDetailSlice";
-import { Card, Col, Image, ListGroup, Row } from "react-bootstrap";
+import { Button, Card, Col, Image, ListGroup, Row } from "react-bootstrap";
 import { payOrder } from "../services/order/OrderPaySlice";
+import { deliverOrder, setReset } from "../services/order/OrderDeliverSlice";
 
 const OrderScreen = () => {
   const { id } = useParams();
@@ -22,6 +23,12 @@ const OrderScreen = () => {
 
   const orderPay = useSelector((state) => state.orderPay);
   const { success: successPay, loading: loadingPay } = orderPay;
+
+  const orderDeliver = useSelector((state) => state.orderDeliver);
+  const { success: successDeliver, loading: loadingDeliver } = orderDeliver;
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
 
   let itemsPrice;
 
@@ -58,7 +65,8 @@ const OrderScreen = () => {
       };
       document.body.appendChild(script);
     };
-    if (!order || successPay) {
+    if (!order || successPay || successDeliver) {
+      dispatch(setReset())
       dispatch(getOrderDetails(orderId));
     } 
     if (!order?.isPaid) {
@@ -70,7 +78,12 @@ const OrderScreen = () => {
     }
     console.log(order);
     // eslint-disable-next-line
-  }, [dispatch, orderId, successPay]);
+  }, [dispatch, orderId, successPay,successDeliver,order]);
+
+  const deliverHandler = () => {
+    dispatch(deliverOrder(order))
+  }
+
 
   return loading ? (
     <Loader />
@@ -191,6 +204,14 @@ const OrderScreen = () => {
                       onSuccess={successPaymentHandler}
                     />
                   )}
+                </ListGroup.Item>
+              )}
+              {loadingDeliver && <Loader />}
+              {userInfo.isAdmin && order.isPaid && !order.isDelivered && (
+                <ListGroup.Item>
+                  <Button type="button" className="btn btn-block" onClick={deliverHandler}>
+                    Mark as Delivered
+                  </Button>
                 </ListGroup.Item>
               )}
             </ListGroup>
