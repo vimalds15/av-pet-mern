@@ -37,12 +37,12 @@ const ProductListScreen = () => {
       navigate('/login')
     }
     if(successCreate){
-      navigate(`/admin/product/${createdProduct._id}/edit}`)
+      navigate(`/admin/product/${createdProduct._id}/edit`)
     }else{
       dispatch(getAllProducts());
     }
     // eslint-disable-next-line
-  }, [dispatch,navigate,userInfo?.isAdmin,successDelete,successCreate,createdProduct]);
+  }, [dispatch,navigate,userInfo?.isAdmin,successDelete,successCreate]);
 
   const createProductHandler = () => {
     dispatch(createProduct())

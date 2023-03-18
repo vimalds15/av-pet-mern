@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { getProductById} from "../services/products/ProductDetailSlice";
-import {  setUserUpdateReset, updateUser } from "../services/user/UserUpdateSlice";
+import { setProductUpdateReset, updateProduct} from "../services/products/ProductUpdateSlice";
 
 
 const ProductEditScreen = () => {
@@ -28,11 +28,17 @@ const ProductEditScreen = () => {
   const productDetail = useSelector(state=>state.productDetail)
   const {loading,error,productInfo:product} = productDetail
 
+  const productUpdate = useSelector(state=>state.productUpdate)
+  const {loading:loadingUpdate,error:errorUpdate,success:successUpdate} = productUpdate
+
 
 //   const redirect = location.search ? location.search.split("=")[1]:"/"
 
   useEffect(()=>{
-  
+       if(successUpdate){
+        dispatch(setProductUpdateReset())
+        navigate('/admin/productlist')
+       }else{
        if(!product?.name || product._id !==productId){
         dispatch(getProductById(productId))
        }else{
@@ -44,12 +50,21 @@ const ProductEditScreen = () => {
         setCountInStock(product.countInStock)
         setDescription(product.description)
     
-   }
-  },[dispatch,productId,product,navigate])
+   }}
+  },[dispatch,productId,product,navigate,successUpdate])
 
   const submitHandler = (e) => {
     e.preventDefault()
-    // dispatch(updateUser({_id:id,name,email,isAdmin}))
+    dispatch(updateProduct({
+        _id:productId,
+        name,
+        price,
+        image,
+        brand,
+        category,
+        description,
+        countInStock
+    }))
   }
 
   return (
@@ -58,8 +73,8 @@ const ProductEditScreen = () => {
 
     <FormContainer>
       <h1>Edit Product</h1>
-      {/* {loadingUpdate&&<Loader />}  */}
-      {/* {errorUpdate&& <Message variant="danger">{errorUpdate}</Message>} */}
+      {loadingUpdate&&<Loader />}  
+       {errorUpdate&& <Message variant="danger">{errorUpdate}</Message>}
       {loading ? <Loader /> : error ? <Message variant="danger">{error}</Message>:(
 
           <Form onSubmit={submitHandler}>

@@ -8,6 +8,7 @@ import ProductCreateSlice from "./products/ProductCreateSlice"
 import ProductDeleteSlice from "./products/ProductDeleteSlice"
 import ProductDetailSlice from "./products/ProductDetailSlice"
 import ProductSlice from "./products/ProductSlice"
+import ProductUpdateSlice from "./products/ProductUpdateSlice"
 import UserDeleteSlice from "./user/UserDeleteSlice"
 import UserDetailSlice from "./user/UserDetailSlice"
 import UserListSlice from "./user/UserListSlice"
@@ -22,6 +23,7 @@ export const store = configureStore({
         "productDetail":ProductDetailSlice,
         "productDelete":ProductDeleteSlice,
         "productCreate":ProductCreateSlice,
+        "productUpdate":ProductUpdateSlice,
         "cart":CartSlice,
         "userLogin":UserLoginSlice,
         "userRegister":UserRegisterSlice,

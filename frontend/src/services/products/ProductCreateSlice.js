@@ -37,7 +37,7 @@ export const {setError,setLoading,setSuccess,setProduct,setProductCreateReset} =
 
 export default ProductCreateSlice.reducer
 
-export const createProduct = (id) => async(dispatch, getState) => {
+export const createProduct = () => async(dispatch, getState) => {
     try {
         dispatch(setLoading(true))
         const {token} =getState().userLogin.userInfo
@@ -48,7 +48,7 @@ export const createProduct = (id) => async(dispatch, getState) => {
         }
   
   
-        const {data}=await axios.post(`/api/products/${id}`,{},config)
+        const {data}=await axios.post(`/api/products`,{},config)
         dispatch(setSuccess(true))
         dispatch(setProduct(data))
         dispatch(setLoading(false))
