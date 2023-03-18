@@ -7,6 +7,7 @@ import Message from "../components/Message";
 import { useNavigate } from "react-router-dom";
 import { getAllProducts } from "../services/products/ProductSlice";
 import { deleteProduct } from "../services/products/ProductDeleteSlice";
+import { createProduct, setProductCreateReset } from "../services/products/ProductCreateSlice";
 
 const ProductListScreen = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,9 @@ const ProductListScreen = () => {
   const productDelete = useSelector((state) => state.productDelete);
   const { loading:loadingDelete, error:errorDelete, success:successDelete } = productDelete;
 
+  const productCreate = useSelector((state) => state.productCreate);
+  const { loading:loadingCreate, error:errorCreate, success:successCreate,product:createdProduct } = productCreate;
+
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
@@ -28,14 +32,21 @@ const ProductListScreen = () => {
   }
 
   useEffect(() => {
-    if(userInfo && userInfo.isAdmin){
-        dispatch(getAllProducts());
+    dispatch(setProductCreateReset())
+    if(!userInfo.isAdmin){
+      navigate('/login')
+    }
+    if(successCreate){
+      navigate(`/admin/product/${createdProduct._id}/edit}`)
     }else{
-        navigate('/login')
+      dispatch(getAllProducts());
     }
     // eslint-disable-next-line
-  }, [dispatch,navigate,userInfo?.isAdmin,successDelete]);
+  }, [dispatch,navigate,userInfo?.isAdmin,successDelete,successCreate,createdProduct]);
 
+  const createProductHandler = () => {
+    dispatch(createProduct())
+  }
 
   return (
     <>
@@ -44,11 +55,14 @@ const ProductListScreen = () => {
             <h1>Products</h1>
         </Col>
         <Col className="text-right">
-            <Button className="my-3" onClick={""}> <i className="fas fa-plus"></i> Create Product</Button>
+            <Button className="my-3" onClick={createProductHandler}> <i className="fas fa-plus"></i> Create Product</Button>
         </Col>
     </Row>
     {loadingDelete&& <Loader />}
-    {errorDelete&&<Message variant="danger">{error}</Message>}
+    {errorDelete&&<Message variant="danger">{errorDelete}</Message>}
+
+    {loadingCreate&& <Loader />}
+    {errorCreate&&<Message variant="danger">{errorCreate}</Message>}
 
       {loading ? (
         <Loader />
