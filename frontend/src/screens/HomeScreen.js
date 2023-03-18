@@ -6,16 +6,18 @@ import { getAllProducts } from "../services/products/ProductSlice";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { useParams } from "react-router-dom";
+import Paginate from "../components/Paginate";
 
 const HomeScreen = () => {
-  const {keyword} = useParams()
+  let {keyword,pageNumber} = useParams()
+  pageNumber=pageNumber ||1
   const productList = useSelector((state) => state.product);
-  const { loading, allProducts,error } = productList;
+  const { loading, allProducts,error,page,pages } = productList;
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllProducts(keyword));
-  }, [dispatch,keyword]);
+    dispatch(getAllProducts(keyword,pageNumber));
+  }, [dispatch,keyword,pageNumber]);
 
   return (
     <>
@@ -25,6 +27,7 @@ const HomeScreen = () => {
       ):error?
         <Message variant={"danger"}>{error}</Message>
        : (
+        <>
         <Row>
           {allProducts.map((product) => (
             <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
@@ -32,6 +35,8 @@ const HomeScreen = () => {
             </Col>
           ))}
         </Row>
+        <Paginate pages={pages} page={page} keyword={keyword ? keyword:""} />
+        </>
       )}
     </>
   );
