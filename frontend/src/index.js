@@ -7,6 +7,10 @@ import "./bootstrap.min.css";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { store } from "./services/store";
+import axios from "axios";
+
+axios.defaults.baseURL="https://av-pets-mern-api.vercel.app/"
+
 
 ReactDOM.render(
   <React.StrictMode>
