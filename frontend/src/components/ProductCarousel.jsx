@@ -14,7 +14,7 @@ const ProductCarousel = () => {
 
   useEffect(()=>{
     dispatch(getTopProducts())
-  },[dispatch])
+  },[dispatch,products.length])
 
   return loading ? <Loader /> : error ? <Message variant="danger">{error}</Message>:(
     <Carousel pause="hover" className='bg-dark'>
