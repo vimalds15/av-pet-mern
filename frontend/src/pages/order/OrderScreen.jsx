@@ -78,7 +78,7 @@ const OrderScreen = () => {
     }
     console.log(order);
     // eslint-disable-next-line
-  }, [dispatch, orderId, successPay,successDeliver,order]);
+  }, [dispatch, orderId, successPay,successDeliver]);
 
   const deliverHandler = () => {
     dispatch(deliverOrder(order))
