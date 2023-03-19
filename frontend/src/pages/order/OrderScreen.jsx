@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { PayPalButton } from "react-paypal-button-v2";
 import { useDispatch, useSelector } from "react-redux";
-import Message from "../components/Message";
-import Loader from "../components/Loader";
+import Message from "../../components/Message";
+import Loader from "../../components/Loader";
 import { Link, useParams } from "react-router-dom";
-import { getOrderDetails } from "../services/order/OrderDetailSlice";
+import { getOrderDetails } from "../../services/order/OrderDetailSlice";
 import { Button, Card, Col, Image, ListGroup, Row } from "react-bootstrap";
-import { payOrder } from "../services/order/OrderPaySlice";
-import { deliverOrder, setReset } from "../services/order/OrderDeliverSlice";
+import { payOrder } from "../../services/order/OrderPaySlice";
+import { deliverOrder, setReset } from "../../services/order/OrderDeliverSlice";
 
 const OrderScreen = () => {
   const { id } = useParams();

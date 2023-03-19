@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Form, Button, Col } from "react-bootstrap";
-import FormContainer from "../components/FormContainer";
+import FormContainer from "../../components/FormContainer";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import CheckoutSteps from "../components/CheckoutSteps";
-import { setPaymentMethod } from "../services/cart/CartSlice";
+import CheckoutSteps from "../../components/CheckoutSteps";
+import { setPaymentMethod } from "../../services/cart/CartSlice";
 
 const PaymentScreen = () => {
   const dispatch = useDispatch();

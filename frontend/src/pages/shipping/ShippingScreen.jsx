@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import FormContainer from "../components/FormContainer";
+import FormContainer from "../../components/FormContainer";
 import {useNavigate} from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
-import { setShippingAddress } from "../services/cart/CartSlice";
-import CheckoutSteps from "../components/CheckoutSteps";
+import { setShippingAddress } from "../../services/cart/CartSlice";
+import CheckoutSteps from "../../components/CheckoutSteps";
 
 const ShippingScreen = () => {
   const dispatch = useDispatch()

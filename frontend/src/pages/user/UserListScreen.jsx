@@ -2,11 +2,11 @@ import React, { useEffect} from "react";
 import { Table, Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import Loader from "../components/Loader";
-import Message from "../components/Message";
-import { getUsers } from "../services/user/UserListSlice";
+import Loader from "../../components/Loader";
+import Message from "../../components/Message";
+import { getUsers } from "../../services/user/UserListSlice";
 import { useNavigate } from "react-router-dom";
-import { deleteUser } from "../services/user/UserDeleteSlice";
+import { deleteUser } from "../../services/user/UserDeleteSlice";
 
 const UserListScreen = () => {
   const dispatch = useDispatch();

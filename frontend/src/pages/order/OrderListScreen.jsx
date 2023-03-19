@@ -2,10 +2,10 @@ import React, { useEffect} from "react";
 import { Table, Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import Loader from "../components/Loader";
-import Message from "../components/Message";
+import Loader from "../../components/Loader";
+import Message from "../../components/Message";
 import { useNavigate } from "react-router-dom";
-import { listAllOrders } from "../services/order/OrderListAdminSlice";
+import { listAllOrders } from "../../services/order/OrderListAdminSlice";
 
 const OrderListScreen = () => {
   const dispatch = useDispatch();

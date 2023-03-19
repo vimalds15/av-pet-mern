@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { Button, Row, Col, ListGroup, Image, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import Message from "../components/Message";
-import CheckoutSteps from "../components/CheckoutSteps";
+import Message from "../../components/Message";
+import CheckoutSteps from "../../components/CheckoutSteps";
 import { Link, useNavigate } from "react-router-dom";
-import { setItemsPrice, setShippingPrice, setTaxPrice, setTotalPrice } from "../services/cart/CartSlice";
-import { createOrder } from "../services/order/OrderCreateSlice";
+import { setItemsPrice, setShippingPrice, setTaxPrice, setTotalPrice } from "../../services/cart/CartSlice";
+import { createOrder } from "../../services/order/OrderCreateSlice";
 
 const PlaceOrderScreen = () => {
   const cart = useSelector((state) => state.cart);

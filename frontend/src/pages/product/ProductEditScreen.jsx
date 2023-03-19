@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Form, Button } from "react-bootstrap";
-import FormContainer from "../components/FormContainer";
+import FormContainer from "../../components/FormContainer";
 import {  Link, useLocation, useNavigate, useParams} from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
-import Loader from "../components/Loader";
-import Message from "../components/Message";
-import { getProductById} from "../services/products/ProductDetailSlice";
-import { setProductUpdateReset, updateProduct} from "../services/products/ProductUpdateSlice";
+import Loader from "../../components/Loader";
+import Message from "../../components/Message";
+import { getProductById} from "../../services/products/ProductDetailSlice";
+import { setProductUpdateReset, updateProduct} from "../../services/products/ProductUpdateSlice";
 
 
 const ProductEditScreen = () => {

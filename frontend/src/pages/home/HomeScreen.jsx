@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
-import Product from "../components/Product";
+import Product from "../../components/Product";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProducts } from "../services/products/ProductSlice";
-import Loader from "../components/Loader";
-import Message from "../components/Message";
+import { getAllProducts } from "../../services/products/ProductSlice";
+import Loader from "../../components/Loader";
+import Message from "../../components/Message";
 import { useParams } from "react-router-dom";
-import Paginate from "../components/Paginate";
-import ProductCarousel from "../components/ProductCarousel";
+import Paginate from "../../components/Paginate";
+import ProductCarousel from "../../components/ProductCarousel";
 
 const HomeScreen = () => {
   let {keyword,pageNumber} = useParams()

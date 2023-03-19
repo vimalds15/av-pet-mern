@@ -9,12 +9,12 @@ import {
   Button,
   Form,
 } from "react-bootstrap";
-import Rating from "../components/Rating";
+import Rating from "../../components/Rating";
 import { useDispatch, useSelector } from "react-redux";
-import Loader from "../components/Loader";
-import Message from "../components/Message";
-import { getProductById } from "../services/products/ProductDetailSlice";
-import { createProductReview, setProductReviewReset } from "../services/products/ProductCreateReviewSlice";
+import Loader from "../../components/Loader";
+import Message from "../../components/Message";
+import { getProductById } from "../../services/products/ProductDetailSlice";
+import { createProductReview, setProductReviewReset } from "../../services/products/ProductCreateReviewSlice";
 
 const ProductScreen = () => {
   const [qty, setQty] = useState(1);
