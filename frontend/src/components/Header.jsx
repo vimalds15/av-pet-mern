@@ -21,7 +21,7 @@ const Header = () => {
         <LinkContainer to="/">
           <Navbar.Brand>
           <img
-              src="logo.png"
+              src="/logo-min.png"
               width="70"
               height="45"
               style={{objectFit:"cover"}}

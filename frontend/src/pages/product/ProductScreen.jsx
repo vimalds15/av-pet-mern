@@ -14,7 +14,11 @@ import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader";
 import Message from "../../components/Message";
 import { getProductById } from "../../services/products/ProductDetailSlice";
-import { createProductReview, setProductReviewReset } from "../../services/products/ProductCreateReviewSlice";
+import {
+  createProductReview,
+  setProductReviewReset,
+} from "../../services/products/ProductCreateReviewSlice";
+import Meta from "../../components/Meta";
 
 const ProductScreen = () => {
   const [qty, setQty] = useState(1);
@@ -36,16 +40,16 @@ const ProductScreen = () => {
   const { userInfo } = userLogin;
 
   useEffect(() => {
-    if(successProductReview){
-      alert("Review Submitted!")
-      setRating(0)
-      setComment("")
-      dispatch(setProductReviewReset())
+    if (successProductReview) {
+      alert("Review Submitted!");
+      setRating(0);
+      setComment("");
+      dispatch(setProductReviewReset());
     }
     dispatch(getProductById(id));
     console.log("productInfo", productInfo);
     // eslint-disable-next-line
-  }, [id, dispatch,successProductReview]);
+  }, [id, dispatch, successProductReview]);
 
   const addToCartHandler = () => {
     navigate(`/cart/${id}?qty=${qty}`);
@@ -67,6 +71,7 @@ const ProductScreen = () => {
         <Message variant={"danger"}>{error}</Message>
       ) : (
         <>
+          <Meta title={productInfo.name} />
           <Row>
             <Col md={6}>
               <Image src={productInfo.image} alt={productInfo.name} fluid />
