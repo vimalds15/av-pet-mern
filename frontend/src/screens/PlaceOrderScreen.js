@@ -98,6 +98,11 @@ useEffect(()=>{
         <Col md={4}>
             <Card>
                 <ListGroup variant="flush">
+                <ListGroup.Item>
+                <h5>Test Payment Credentials</h5>
+                <p>Email: test@test.123.com <br /> Password: 12345678</p>
+                
+              </ListGroup.Item>
                     <ListGroup.Item>
                         <h2>Order Summary</h2>
                     </ListGroup.Item>

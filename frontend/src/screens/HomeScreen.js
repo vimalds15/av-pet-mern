@@ -23,7 +23,7 @@ const HomeScreen = () => {
   return (
     <>
     {!keyword && <ProductCarousel />}
-      <h1>Latest Products</h1>
+      <h1>Latest Pets</h1>
       {loading ? (
         <Loader />
       ):error?

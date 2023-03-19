@@ -16,10 +16,19 @@ const Header = () => {
 
   return (
     <header>
-    <Navbar bg="dark" variant='dark' expand="lg" collapseOnSelect>
+    <Navbar bg="dark" variant='dark' expand="lg" collapseOnSelect className='border-bottom border-3'>
       <Container>
         <LinkContainer to="/">
-          <Navbar.Brand>Av Store</Navbar.Brand>
+          <Navbar.Brand>
+          <img
+              src="logo.png"
+              width="70"
+              height="45"
+              style={{objectFit:"cover"}}
+              className="d-inline-block align-top"
+              alt="React Bootstrap logo"
+            />
+          </Navbar.Brand>
         </LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
