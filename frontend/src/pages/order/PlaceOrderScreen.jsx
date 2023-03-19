@@ -69,9 +69,9 @@ useEffect(()=>{
             </ListGroup.Item>
             <ListGroup.Item>
               <h2>Order Items</h2>
-                {cart.cartItems.length===0?<Message>Your cart is empty</Message>:(
+                {cart?.cartItems?.length===0?<Message>Your cart is empty</Message>:(
                     <ListGroup variant="flush">
-                        {cart.cartItems.map((item,index)=> (
+                        {cart?.cartItems?.map((item,index)=> (
                             <ListGroup.Item key={index}>
                                 <Row>
                                     <Col md={1}>
