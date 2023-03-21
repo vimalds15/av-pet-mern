@@ -20,31 +20,31 @@ The following screens are available in AV Pets:
 
 ### Home Screen
 
-![Home Screen](/path/to/home-screen.png)
+<img src="screenshots/1.png" alt="Home Screen" width="600" height="400">
 
 The Home Screen displays featured pets and a search bar for finding pets.
 
 ### Product Screen
 
-![Product Screen](/path/to/product-screen.png)
+<img src="screenshots/2.png" alt="Home Screen" width="650" height="400">
 
 The Product Screen displays detailed information about a selected pet, including price, description, and seller information.
 
 ### Admin Screen
 
-![Admin Screen](/path/to/admin-screen.png)
+<img src="screenshots/7.png" alt="Home Screen" width="650" height="400">
 
 The Admin Screen is accessible only to merchants and provides tools for managing their pet listings and sales.
 
 ### Cart Screen
 
-![Cart Screen](/path/to/cart-screen.png)
+<img src="screenshots/3.png" alt="Home Screen" width="650" height="400">
 
 The Cart Screen displays items that the user has added to their shopping cart and allows them to adjust quantities or remove items before checkout.
 
 ### Payment Screen
 
-![Payment Screen](/path/to/payment-screen.png)
+<img src="screenshots/5.png" alt="Home Screen" width="650" height="400">
 
 The Payment Screen allows users to securely enter their payment information and complete their purchase.
 
